@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Search</title>
+</head>
+<style>
+body{
+    text-align: center;
+}
+#tt{
+  margin: 0 auto;
+}
+</style>
+<body>
+    {% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %}
+    <form action="/booksearch_bo/" method="get">
+        请输入作者的姓名<input type="text" name="author"><br>
+        请输入作品名<input type="text" name="title"><br>
+        请输入出版社<input type="text" name="publisher"><br>
+        请输入出版日期<input type="text" name="date"><br>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

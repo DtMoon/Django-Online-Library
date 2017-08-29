@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Search</title>
+</head>
+<style>
+body{
+    text-align: center;
+}
+#tt{
+  margin: 0 auto;
+}
+</style>
+<body>
+	{% if error %}
+		<p style="color: red;">Please submit a search term.</p>
+	{% endif %}
+	<form action="/search/" method="get">
+		请输入作者的姓名<input type="text" name="name"><br>
+		请输入作者的性别<input type="text" name="sex"><br>
+		请输入作者的年龄<input type="text" name="age"><br>
+		请输入作者的电子邮件<input type="text" name="email"><br>
+		<input type="submit" value="Search">
+	</form>
+</body>
+</html>

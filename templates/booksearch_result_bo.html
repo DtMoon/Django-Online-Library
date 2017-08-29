@@ -1,0 +1,30 @@
+<html>
+<style>
+body{
+    text-align: center;
+}
+#tt{
+  margin: 0 auto;
+}
+</style>
+
+<body>
+
+{% if books %}
+	<p>Found {{ books|length }} book{{ books|pluralize }}.</p>
+	<ul>
+		<table id="tt" border="2">
+		<tr> <td>作者</td>  <td>作品名</td> <td>出版社</td> <td>出版日期</td>   </tr>
+		{% for bo in books %}
+		<tr {% if forloop.counter|divisibleby:"2"  %} style="background: gainsboro" {% else %} style="background: aquamarine"  {% endif %}  > 
+		<td>{{ bo.author }}</td> <td>{{ bo.title }}</td> <td>{{ bo.publisher }}</td> <td>{{ bo.date }}</td>
+		{% endfor %}
+		</tr>
+		</table>
+	</ul>
+{% else %}
+	<p>No books matched your search criteria.</p>
+{% endif %}
+<p><a href="/seeallbook/"> 返回所有作品</a></p>
+</body>
+</html>

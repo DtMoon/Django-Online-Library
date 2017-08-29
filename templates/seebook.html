@@ -1,0 +1,34 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>图书资料集</title>
+</head>
+<style>
+body{
+    text-align: center;
+}
+#tt{
+  margin: 0 auto;
+}
+</style>
+<body>
+
+<table id="tt" border="2">
+<tr> <td>作者</td>  <td>作品名</td> <td>出版社</td> <td>出版日期</td>   </tr>
+{%  for d in data %}
+<tr {% if forloop.counter|divisibleby:"2"  %} style="background: gainsboro" {% else %} style="background: aquamarine"  {% endif %}  >  
+<td>{{ d.author }}</td> <td>{{ d.title }}</td> <td>{{ d.publisher }}</td> <td>{{ d.date }}</td>
+<td>
+    <a href="/bo_delete?id={{ d.id }}" onclick = "return confirm('确认要删除吗？')">删除</a>
+    <a href="/pack_modify_bo?id={{ d.id }}">修改</a>
+</td>
+</tr>
+{% endfor %}
+作品信息
+</table>
+<p><a href="/addbook/"> 点击以添加新记录</a></p>
+<p><a href="/searchbook_form_bo/"> 点击以查询记录</a></p>
+<p><a href="/back/"> 返回作者信息</a></p>
+<p><a href="/seeallbook/"> 返回作品信息</a></p>
+</body>
+</html>

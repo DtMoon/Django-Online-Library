@@ -1,0 +1,35 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>图书资料集</title>
+</head>
+<style>
+body{
+    text-align: center;
+}
+#tt{
+  margin: 0 auto;
+}
+</style>
+<body>
+
+<table id="tt" border="2">
+<tr> <td>作家的姓名</td>  <td>作家的性别</td> <td>作家的年龄</td> <td>作家的电邮地址</td>   </tr>
+{%  for d in data %}
+<tr {% if forloop.counter|divisibleby:"2"  %} style="background: gainsboro" {% else %} style="background: aquamarine"  {% endif %}  >  
+<td>{{ d.name }}</td> <td>{{ d.sex }}</td> <td>{{ d.age }}</td> <td>{{ d.email }}</td>
+<td>
+    <a href="/au_delete?id={{ d.id }}" onclick = "return confirm('确认要删除吗？')">删除</a>  
+    <a href="/pack_modify?id={{ d.id }}&name={{ d.name }}&sex={{ d.sex }}&age={{ d.age }}&email={{ d.email }}">修改</a>
+	<a href="/seebook?id={{ d.id }}">查看作品</a>
+
+</td>
+</tr>
+{% endfor %}
+作者信息
+</table>
+<p><a href="/add/"> 点击以添加新记录</a></p>
+<p><a href="/search_form/"> 点击以查询记录</a></p>
+<p><a href="/seeallbook/"> 查看所有作品</a></p>
+</body>
+</html>

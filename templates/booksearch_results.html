@@ -1,0 +1,30 @@
+<html>
+<style>
+body{
+    text-align: center;
+}
+#tt{
+  margin: 0 auto;
+}
+</style>
+
+<body>
+<p>作者名: <strong>{{ query }}</strong></p>
+
+{% if books %}
+	<p>Found {{ books|length }} book{{ books|pluralize }}.</p>
+	<ul>
+		<table id="tt" border="2">
+		<tr> <td>作家的姓名</td>  <td>作家的性别</td> <td>作家的年龄</td> <td>作家的电邮地址</td>   </tr>
+		{% for bo in books %}
+		<tr {% if forloop.counter|divisibleby:"2"  %} style="background: gainsboro" {% else %} style="background: aquamarine"  {% endif %}  > 
+		<td>{{ bo.author }}</td> <td>{{ bo.title }}</td> <td>{{ bo.publisher }}</td> <td>{{ bo.date }}</td>
+		{% endfor %}
+		</tr>
+		</table>
+	</ul>
+{% else %}
+	<p>No books belong to {{ query }} exist.</p>
+{% endif %}
+</body>
+</html>

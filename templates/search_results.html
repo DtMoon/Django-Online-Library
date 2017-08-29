@@ -1,0 +1,32 @@
+<html>
+<style>
+body{
+    text-align: center;
+}
+#tt{
+  margin: 0 auto;
+}
+</style>
+
+<body>
+
+{% if authors %}
+    <p>Found {{ authors|length }} author{{ authors|pluralize }}.</p>
+    <ul>
+        <table id="tt" border="2">
+        <tr> <td>作家的姓名</td>  <td>作家的性别</td> <td>作家的年龄</td> <td>作家的电邮地址</td>   </tr>
+        {% for author in authors %}
+        <tr {% if forloop.counter|divisibleby:"2"  %} style="background: gainsboro" {% else %} style="background: aquamarine"  {% endif %}  > 
+        <td>{{ author.name }}</td> <td>{{ author.sex }}</td> <td>{{ author.age }}</td> <td>{{ author.email }}</td>
+        <td>
+            <a href="/seebook?id={{ author.id }}">查看作品</a>
+        </td>
+        {% endfor %}
+        </tr>
+        </table>
+    </ul>
+{% else %}
+    <p>No authors matched your search criteria.</p>
+{% endif %}
+</body>
+</html>
